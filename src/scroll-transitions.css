@@ -1,0 +1,327 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLL-DRIVEN BACKGROUND TRANSITION STYLES
+   
+   These styles complement the ScrollBackground component and section
+   transitions for the cinematic white-to-black scroll effect.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   BASE OVERRIDES
+   Remove default white background since ScrollBackground handles it
+   ───────────────────────────────────────────────────────────────────────────── */
+
+html,
+body {
+    background-color: transparent !important;
+}
+
+/* Ensure sections don't have competing backgrounds */
+section {
+    background-color: transparent;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLL BACKGROUND LAYER
+   Fixed full-viewport background behind all content
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.scroll-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    will-change: background-color;
+}
+
+.geometric-noise-layer {
+    position: absolute;
+    inset: 0;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HERO SECTION ADJUSTMENTS
+   Blend hero background with scroll transition
+   ───────────────────────────────────────────────────────────────────────────── */
+
+#hero {
+    background-color: transparent;
+}
+
+/* Replace the solid hero background with a subtle gradient that blends */
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: 100vh;
+    /* Subtle radial gradient instead of image for smoother blending */
+    background: radial-gradient(
+        ellipse 120% 80% at 50% 30%,
+        rgba(245, 245, 245, 0.3) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+/* Additional blend helper */
+.hero-background-blend {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 70%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    pointer-events: none;
+}
+
+/* Scroll indicator styling */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+
+.scroll-indicator-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+}
+
+.scroll-text {
+    font-family: 'Mona Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.scroll-arrow {
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CONTACT/SPLINE SECTION
+   Handles the Spline scene fade-in and dark mode styling
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-section {
+    background-color: transparent;
+}
+
+/* Spline container - full viewport fixed */
+.spline-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: auto;
+}
+
+/* Ensure Spline iframe fills container */
+.spline-container iframe,
+.spline-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+}
+
+/* Gradient overlay to help Spline blend with dark background */
+.spline-blend-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(
+        ellipse 80% 50% at 30% 70%,
+        rgba(11, 11, 11, 0.3) 0%,
+        transparent 60%
+    );
+    pointer-events: auto;
+}
+
+/* "Entering the space" transition text */
+.space-transition-text {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DARK MODE FORM STYLING
+   Contact form adapted for dark background
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.contact-form-dark {
+    background: rgba(20, 20, 25, 0.85) !important;
+    backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.contact-form-dark::before,
+.contact-form-dark::after {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    opacity: 0.3;
+}
+
+.contact-form-dark label {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.contact-form-dark input,
+.contact-form-dark textarea {
+    background: rgba(30, 30, 40, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+.contact-form-dark input::placeholder,
+.contact-form-dark textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.contact-form-dark input:focus,
+.contact-form-dark textarea:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.05);
+}
+
+/* Dark mode CTA button */
+.cta-button-dark {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.cta-button-dark .text {
+    color: white !important;
+}
+
+.cta-button-dark .bg-circle {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.cta-button-dark:hover .bg-circle {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SECTION TEXT COLOR TRANSITIONS
+   Ensure text remains readable as background darkens
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* About section - transitions from dark to light text */
+#about .about-card {
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+/* Skills section title adjustments */
+#skills h1 {
+    transition: color 0.5s ease;
+}
+
+/* Showcase section - mid-transition, can use either depending on scroll */
+#work h2,
+#work p {
+    transition: color 0.3s ease;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NAVBAR ADJUSTMENTS
+   Adapt navbar for dark backgrounds
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.navbar.scrolled {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* The navbar will need JS-based color changes based on scroll position
+   This provides a base that can be enhanced with Framer Motion */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER ADJUSTMENTS
+   Already dark, just ensure seamless blend
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer {
+    background-color: transparent !important;
+}
+
+.footer-container {
+    position: relative;
+    z-index: 10;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PERFORMANCE OPTIMIZATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Promote layers for better GPU performance */
+.scroll-background,
+.geometric-noise-layer,
+.spline-container,
+#hero .absolute {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .geometric-noise-layer {
+        animation: none !important;
+    }
+    
+    .scroll-arrow {
+        animation: none !important;
+    }
+    
+    .floating-element {
+        animation: none !important;
+    }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESPONSIVE ADJUSTMENTS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        bottom: 1rem;
+    }
+    
+    .space-transition-text {
+        top: 1rem;
+    }
+    
+    .space-transition-text p {
+        font-size: 0.6rem;
+    }
+}
