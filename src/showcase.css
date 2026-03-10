@@ -1,0 +1,336 @@
+/* ═══════════════════════════════════════════════════════════════════
+   SHOWCASE SECTION
+   All layout, card, thumbnail, and button styles for the
+   Recent Projects / Showcase section.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Design tokens (scoped to showcase) ──────────────────────── */
+.showcase-section {
+  --card-border:       1px solid rgba(255, 255, 255, 0.15);
+  --card-border-hover: 1px solid rgba(255, 255, 255, 0.5);
+  --card-shadow:       0 0 18px rgba(255, 255, 255, 0.07), 0 0 40px rgba(255, 255, 255, 0.04);
+  --card-shadow-hover: 0 0 40px rgba(255, 255, 255, 0.18), 0 0 80px rgba(255, 255, 255, 0.08);
+  --card-bg:           #0f0f0f;
+  --card-radius:       8px;
+  --card-hover-lift:   none;
+
+  --tag-color:         rgba(255, 255, 255, 0.6);
+  --tag-bg:            rgba(255, 255, 255, 0.05);
+  --tag-border:        1px solid rgba(255, 255, 255, 0.12);
+
+  --text-title:        #ffffff;
+  --text-body:         rgba(255, 255, 255, 0.55);
+  --text-link:         rgba(255, 255, 255, 0.8);
+
+  --section-title-color: #fff;
+  --thumb-size:          82px;
+  --btn-color:           #0f0f0f;
+  --btn-color-hover:     #1a1a1a;
+
+  --gap:  1.1rem;
+  --pad:  1.25rem;
+}
+
+/* ─── Section wrapper ──────────────────────────────────────────── */
+.showcase-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.showcase-inner {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+/* ─── Rows ─────────────────────────────────────────────────────── */
+.showcase-row {
+  display: flex;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+/* ─── Section title block ──────────────────────────────────────── */
+.showcase-title-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.showcase-title-block h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--section-title-color);
+  line-height: 1.1;
+  margin: 0;
+  font-family: 'Mona Sans', sans-serif;
+}
+
+/* ─── Shared card base ─────────────────────────────────────────── */
+.sc-card {
+  background-color: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.sc-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ─── Featured card (top row, desktop) ────────────────────────── */
+.sc-card--featured {
+  flex: 1 1 0;
+  min-width: 0;
+  max-height: 370px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.sc-card--featured .sc-card__body {
+  padding: var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: hidden;
+}
+
+.sc-card--featured .sc-card__image {
+  overflow: hidden;
+}
+
+/* ─── Small card (bottom row) ──────────────────────────────────── */
+.sc-card--small {
+  flex: 1 1 0;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sc-card--small .sc-card__image {
+  width: 100%;
+  height: 155px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sc-card--small .sc-card__body {
+  padding: 1rem var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+/* ─── Card image ───────────────────────────────────────────────── */
+.sc-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.sc-card__image:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Card title ───────────────────────────────────────────────── */
+.sc-card__title {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 800;
+  color: var(--text-title);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.sc-card--featured .sc-card__title { font-size: 1.6rem; }
+.sc-card--small   .sc-card__title { font-size: 1.25rem; }
+
+/* ─── Card description ─────────────────────────────────────────── */
+.sc-card__desc {
+  color: var(--text-body);
+  line-height: 1.65;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sc-card--featured .sc-card__desc { font-size: 0.95rem; -webkit-line-clamp: 5; }
+.sc-card--small   .sc-card__desc { font-size: 0.92rem; -webkit-line-clamp: 3; }
+
+/* ─── Tag pills ────────────────────────────────────────────────── */
+.sc-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.sc-tag {
+  display: inline-block;
+  padding: 3px 9px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border: var(--tag-border);
+  border-radius: 2px;
+  color: var(--tag-color);
+  background-color: var(--tag-bg);
+  white-space: nowrap;
+}
+
+/* ─── Card link ────────────────────────────────────────────────── */
+.sc-card__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-link);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.sc-card__link:hover { gap: 0.6rem; }
+
+/* ─── Featured badge ───────────────────────────────────────────── */
+.sc-badge {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  pointer-events: none;
+}
+
+/* ─── Right column (mini grid + button) ───────────────────────── */
+.showcase-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+/* ─── Mini thumbnail grid ──────────────────────────────────────── */
+.sc-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.sc-mini-thumb {
+  display: block;
+  overflow: hidden;
+  border: var(--card-border);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.sc-mini-thumb:hover {
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.sc-mini-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.sc-mini-thumb:hover img { transform: scale(1.1); }
+
+/* ─── Portfolio button ─────────────────────────────────────────── */
+.sc-portfolio-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: calc(var(--thumb-size) * 2 + 0.55rem);
+  height: calc(var(--thumb-size) * 2 + 0.55rem);
+  flex-shrink: 0;
+  background-color: var(--btn-color);
+  border: var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.07), 0 0 40px rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.2;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.sc-portfolio-btn:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.18), 0 0 80px rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--btn-color-hover);
+}
+
+/* ─── Mobile — featured card hidden, SmallCard shown instead ───── */
+.sc-featured-mobile { display: none; flex: 1 1 0; min-width: 200px; }
+.sc-featured-desktop { flex: 1 1 0; min-width: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .showcase-row           { flex-wrap: wrap; }
+  .showcase-title-block   { width: 100%; }
+
+  /* Desktop featured card hides; mobile version (SmallCard) shows */
+  .sc-featured-desktop    { display: none !important; }
+  .sc-featured-mobile     { display: flex !important; }
+
+  /* Right column switches to row: grid beside button */
+  .showcase-right-col {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  /* Button becomes square beside the grid */
+  .sc-portfolio-btn {
+    width: 100px;
+    height: 100px;
+    font-size: 0.75rem;
+  }
+}

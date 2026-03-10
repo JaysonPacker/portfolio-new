@@ -10,10 +10,7 @@
    Remove default white background since ScrollBackground handles it
    ───────────────────────────────────────────────────────────────────────────── */
 
-html,
-body {
-    background-color: transparent !important;
-}
+
 
 /* Ensure sections don't have competing backgrounds */
 section {

@@ -1,0 +1,227 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PROJECTS GRID SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+
+#projects-grid {
+  --pg-border:        rgba(255, 255, 255, 0.07);
+  --pg-border-hover:  rgba(255, 255, 255, 0.07);
+  --pg-glow:          0 4px 6px rgba(0,0,0,0.4), 0 12px 20px rgba(0,0,0,0.5), 0 24px 40px rgba(0,0,0,0.3);
+  --pg-glow-hover:    0 8px 12px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.6), 0 40px 60px rgba(0,0,0,0.4);
+  --pg-bg:            #161616;
+  --pg-tag-color:     rgba(255, 255, 255, 0.5);
+  --pg-tag-bg:        rgba(255, 255, 255, 0.05);
+  --pg-tag-border:    rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Section wrapper ──────────────────────────────────────────── */
+#projects-grid {
+  width: 100%;
+  padding: 5rem 1.5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pg-inner {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ─── Header row ────────────────────────────────────────────────── */
+.pg-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.pg-title {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* ─── Filter bar ────────────────────────────────────────────────── */
+.pg-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pg-filter-btn {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--pg-border);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.pg-filter-btn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.pg-filter-btn.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Grid ──────────────────────────────────────────────────────── */
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ─── Card ──────────────────────────────────────────────────────── */
+.pg-card {
+  background: var(--pg-bg);
+  border: 1px solid var(--pg-border);
+  border-radius: 12px;
+  box-shadow: var(--pg-glow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pg-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--pg-glow-hover);
+}
+
+/* Card enter animation */
+.pg-card.pg-card--entering {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* ─── Card image ────────────────────────────────────────────────── */
+.pg-card__image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pg-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.pg-card:hover .pg-card__image img {
+  transform: scale(1.05);
+}
+
+/* ─── Card body ─────────────────────────────────────────────────── */
+.pg-card__body {
+  padding: 1.1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.pg-card__title {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pg-card__desc {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.65;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Tags ──────────────────────────────────────────────────────── */
+.pg-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.pg-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pg-tag-color);
+  background: var(--pg-tag-bg);
+  border: 1px solid var(--pg-tag-border);
+  border-radius: 3px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+/* ─── Card link ─────────────────────────────────────────────────── */
+.pg-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s, gap 0.2s;
+  margin-top: 0.25rem;
+}
+
+.pg-card__link:hover {
+  color: #fff;
+  gap: 0.6rem;
+}
+
+/* ─── Empty state ───────────────────────────────────────────────── */
+.pg-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 0;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .pg-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pg-grid {
+    grid-template-columns: 1fr;
+  }
+}

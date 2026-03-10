@@ -1,35 +1,24 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
 import TitleHeader from "../components/TitleHeader";
 import { techStackIcons } from "../constants";
 import TechIcon from "../components/Models/TechLogos/TechIcon.jsx";
-
+import "../skills.css";
 
 const Skills = () => {
-    // Animate the tech cards in the skills section
     useGSAP(() => {
-        // This animation is triggered when the user scrolls to the #skills wrapper
-        // The animation starts when the top of the wrapper is at the center of the screen
-        // The animation is staggered, meaning each card will animate in sequence
-        // The animation ease is set to "power2.inOut", which is a slow-in fast-out ease
         gsap.fromTo(
-            ".tech-card",
+            ".sk-card",
+            { y: 50, opacity: 0 },
             {
-                // Initial values
-                y: 50, // Move the cards down by 50px
-                opacity: 0, // Set the opacity to 0
-            },
-            {
-                // Final values
-                y: 0, // Move the cards back to the top
-                opacity: 1, // Set the opacity to 1
-                duration: 1, // Duration of the animation
-                ease: "power2.inOut", // Ease of the animation
-                stagger: 0.2, // Stagger the animation by 0.2 seconds
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power2.inOut",
+                stagger: 0.2,
                 scrollTrigger: {
-                    trigger: "#skills", // Trigger the animation when the user scrolls to the #skills wrapper
-                    start: "top center", // Start the animation when the top of the wrapper is at the center of the screen
+                    trigger: "#skills",
+                    start: "top center",
                 },
             }
         );
@@ -37,33 +26,38 @@ const Skills = () => {
 
     return (
         <div id="skills" className="flex-center section-padding md:mb-0 mb-20">
-            <div className="w-full h-full md:px-10 px-5 text-gray-200 ">
-                <TitleHeader
-                    title="Skills"
+            <div className="w-full h-full md:px-10 px-5 text-gray-200">
+                <TitleHeader title="Skills" />
 
-                />
-                <div className="tech-grid">
-                    {/* Loop through the techStackIcons array and create a component for each item.
-              The key is set to the name of the tech stack icon, and the classnames are set to
-              card-border, tech-card, overflow-hidden, and group. The xl:rounded-full and rounded-lg
-              classes are only applied on larger screens. */}
-                    {techStackIcons.map((techStackIcon) => (
-                        <div
-                            key={techStackIcon.name}
-                            className="tech-card overflow-hidden group"
-                        >
-                            <div className="tech-card-animated-bg" />
-                            <div className="tech-card-content">
-                                <div className="tech-icon-wrapper">
-                                    <TechIcon model={techStackIcon} />
+                <div className="sk-grid">
+                    {techStackIcons.map((tech) => (
+                        <div key={tech.name} className="sk-card">
+                            <div className="sk-card-inner">
+
+                                {/* Left — Three.js model */}
+                                <div className="sk-icon-wrapper">
+                                    <TechIcon model={tech} />
                                 </div>
-                                <div className="padding-x w-full">
-                                    <p>{techStackIcon.name}</p>
+
+                                {/* Divider */}
+                                <div className="sk-divider" />
+
+                                {/* Right — category name + skill tags */}
+                                <div className="sk-info">
+                                    <span className="sk-name">{tech.name}</span>
+                                    <div className="sk-tags">
+                                        {tech.skills.map((skill) => (
+                                            <span key={skill} className="sk-tag">
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     ))}
-                  </div>
+                </div>
             </div>
         </div>
     );

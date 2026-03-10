@@ -1,10 +1,9 @@
 import React from 'react';
-import AnimatedSection from "../components/AnimatedSection.jsx";
 
 const About = () => {
     return (
         <section id="about" className="section-padding ">
-            <AnimatedSection/>
+
             <div className="max-w-4xl mx-auto mt-16">
                 <div className="about-card">
                     <div className="text-center space-y-6">

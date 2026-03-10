@@ -1,0 +1,249 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PROJECT PAGE
+   ═══════════════════════════════════════════════════════════════════ */
+
+.pp-page {
+  min-height: 100vh;
+  background: #0b0b0b;
+  color: #fff;
+  padding-bottom: 6rem;
+}
+
+/* ─── Back button ───────────────────────────────────────────────── */
+.pp-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1.5rem 2rem 0;
+  transition: color 0.2s;
+}
+
+.pp-back:hover { color: #fff; }
+.pp-back:hover svg { transform: translateX(-3px); }
+.pp-back svg { transition: transform 0.2s; }
+
+/* ─── Top section: image left, info right ───────────────────────── */
+.pp-top {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+  padding: 0 2rem;
+  align-items: start;
+}
+
+/* ─── Left column ───────────────────────────────────────────────── */
+.pp-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* Hero image — grey box */
+.pp-hero-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4), 0 12px 20px rgba(0,0,0,0.5);
+}
+
+.pp-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title block — red box */
+.pp-title-block {
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3), 0 12px 20px rgba(0,0,0,0.4);
+}
+
+.pp-title {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+}
+
+.pp-title-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.pp-title-link:hover { color: #fff; }
+
+/* Skills block — green box */
+.pp-skills-block {
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3), 0 12px 20px rgba(0,0,0,0.4);
+}
+
+.pp-skills-label {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin: 0 0 0.75rem;
+}
+
+.pp-skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pp-skill-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 0.3rem 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Right column — description ────────────────────────────────── */
+.pp-right {
+  position: sticky;
+  top: 100px;
+}
+
+.pp-desc-block {
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4), 0 12px 20px rgba(0,0,0,0.5), 0 24px 40px rgba(0,0,0,0.3);
+  height: 100%;
+}
+
+.pp-desc-label {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin: 0 0 1rem;
+}
+
+.pp-desc-text {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ─── Image grid section ────────────────────────────────────────── */
+.pp-gallery {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 0 2rem;
+}
+
+.pp-gallery-title {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin: 0 0 1.25rem;
+}
+
+/* Masonry-style grid — images shift around expanded one */
+.pp-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+/* Default thumb */
+.pp-grid-item {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4), 0 12px 20px rgba(0,0,0,0.4);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, grid-column 0.4s ease, grid-row 0.4s ease;
+  aspect-ratio: 16 / 10;
+}
+
+/* Expanded item spans 2 columns and 2 rows */
+.pp-grid-item.expanded {
+  grid-column: span 2;
+  grid-row: span 2;
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 0 30px rgba(255,255,255,0.08), 0 12px 20px rgba(0,0,0,0.6);
+}
+
+.pp-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.pp-grid-item:hover img { transform: scale(1.04); }
+.pp-grid-item.expanded img { transform: scale(1); }
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pp-top {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-right {
+    position: static;
+  }
+
+  .pp-image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .pp-image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-grid-item.expanded {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

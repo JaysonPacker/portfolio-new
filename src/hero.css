@@ -1,0 +1,212 @@
+/* ═══════════════════════════════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Design tokens ────────────────────────────────────────────── */
+#hero {
+  --hero-text-color:    #ffffff;
+  --hero-sub-color:     rgba(255, 255, 255, 0.75);
+  --hero-gradient-from: #ffffff;
+  --hero-gradient-mid:  #000000;
+}
+
+/* ─── Section base ─────────────────────────────────────────────── */
+#hero {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ─── Background gradient: radial, white center anchored left-of-canvas ── */
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 60% 100% at 0% 50%,
+    var(--hero-gradient-from)  0%,
+    var(--hero-gradient-from)  10%,
+    rgba(80, 80, 80, 0.85)     40%,
+    var(--hero-gradient-mid)   70%,
+    var(--hero-gradient-mid)   100%
+  );
+}
+
+/* ─── Canvas layer (Three.js) ──────────────────────────────────── */
+.hero-canvas-layer {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  z-index: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+/* ─── Content layout — shifted right, left aligned ─────────────── */
+.hero-layout {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: left;
+  height: 100vh;
+  padding: 0 8vw;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  pointer-events: auto;
+  max-width: 520px;
+}
+
+/* ─── Hero text (Audiowide title) ──────────────────────────────── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--hero-text-color);
+}
+
+/* ─── HeroTitle component ───────────────────────────────────────── */
+.ht-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Small rotating label above the headline */
+.ht-label {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  transition: opacity 0.3s ease;
+}
+
+.ht-label--visible { opacity: 1; }
+.ht-label--hidden  { opacity: 0; }
+
+/* Main headline */
+.ht-headline {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--hero-text-color);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ─── Sub-paragraph ────────────────────────────────────────────── */
+.hero-paragraph {
+  color: var(--hero-sub-color);
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  max-width: 480px;
+  line-height: 1.65;
+  text-align: left;
+  opacity: 0; /* GSAP animates this in */
+}
+
+/* ─── CTA button wrapper ───────────────────────────────────────── */
+.hero-cta {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero-cta .cta-wrapper {
+  width: clamp(200px, 30vw, 320px);
+}
+
+/* ─── Scroll Down button — white glow style ────────────────────── */
+#hero .cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.75rem;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#hero .cta-button:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.12), 0 0 80px rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+#hero .cta-text {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+#hero .cta-arrow {
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+  animation: heroArrowBounce 1.2s ease-in-out infinite;
+}
+
+@keyframes heroArrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.scroll-indicator-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+}
+
+.scroll-text {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  animation: heroScrollBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes heroScrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* ─── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-bg-gradient {
+    background: linear-gradient(
+      to bottom,
+      var(--hero-gradient-from)  0%,
+      var(--hero-gradient-mid)   60%,
+      transparent                100%
+    );
+  }
+
+  .hero-paragraph {
+    font-size: 0.95rem;
+    max-width: 90vw;
+  }
+}

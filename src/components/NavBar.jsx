@@ -1,41 +1,55 @@
-import React, {useEffect, useState} from 'react'
-import {navLinks} from "../constants/index.js";
+import { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { navLinks } from '../constants/index.js';
 
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const navigate  = useNavigate();
+    const location  = useLocation();
 
     useEffect(() => {
-        const handleScroll = () => {
-            const isScrolled = window.scrollY > 10;
-            setScrolled(isScrolled);
-        }
+        const handleScroll = () => setScrolled(window.scrollY > 10);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [])
+    }, []);
+
+    const scrollToSection = (id) => {
+        const target = document.getElementById(id);
+        if (target) {
+            const offset = window.innerHeight * 0.13;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+    };
 
     const handleNavClick = (e, link) => {
         e.preventDefault();
+        const id = link.replace('#', '');
 
-        // Remove the # from the link to get the ID
-        const targetId = link.replace('#', '');
-        const target = document.getElementById(targetId);
+        if (location.pathname === '/') {
+            // Already on homepage — just scroll
+            scrollToSection(id);
+        } else {
+            // On a project page — navigate home then scroll after render
+            navigate('/');
+            // Small delay lets the homepage mount before scrolling
+            setTimeout(() => scrollToSection(id), 120);
+        }
+    };
 
-        if (target) {
-            const offset = window.innerHeight * 0.13; // Leave a bit of space at the top
-            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-
-            window.scrollTo({ top, behavior: "smooth" });
+    const handleLogoClick = (e) => {
+        e.preventDefault();
+        if (location.pathname === '/') {
+            scrollToSection('hero');
+        } else {
+            navigate('/');
         }
     };
 
     return (
-        <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
+        <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
             <div className="inner">
-                <a
-                    href="#hero"
-                    className="logo"
-                    onClick={(e) => handleNavClick(e, '#hero')}
-                >
+                <a href="/" className="logo" onClick={handleLogoClick}>
                     Jayson Packer
                 </a>
 
@@ -68,6 +82,6 @@ const NavBar = () => {
             </div>
         </header>
     );
-}
+};
 
-export default NavBar
+export default NavBar;

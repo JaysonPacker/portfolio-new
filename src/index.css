@@ -10,10 +10,13 @@ html,
 body {
   width: 100dvw;
   overflow-x: hidden;
-
   color: black;
   scroll-behavior: smooth;
   font-family: "Mona Sans", sans-serif;
+}
+
+body {
+  background-color: #0B0B0B;
 }
 
 section {

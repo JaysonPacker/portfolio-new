@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════════════════════════════
+   SKILLS SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+
+#skills {
+  --sk-border:      rgba(255, 255, 255, 0.08);
+  --sk-border-hover:rgba(255, 255, 255, 0.25);
+  --sk-bg:          #111111;
+  --sk-tag-color:   rgba(255, 255, 255, 0.45);
+  --sk-tag-border:  rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Grid ──────────────────────────────────────────────────────── */
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* ─── Card — spotlight style (card 20) ─────────────────────────── */
+.sk-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--sk-bg);
+  border: 1px solid var(--sk-border);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  cursor: default;
+}
+
+/* Spotlight radial bloom — appears on hover */
+.sk-card::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sk-card:hover::before { opacity: 1; }
+.sk-card:hover { border-color: var(--sk-border-hover); }
+
+/* ─── Card inner layout: 3D model left, skills right ───────────── */
+.sk-card-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-height: 200px;
+}
+
+/* ─── 3D model canvas wrapper ───────────────────────────────────── */
+.sk-icon-wrapper {
+  flex: 0 0 160px;
+  height: 200px;
+  position: relative;
+}
+
+/* ─── Divider line between model and skills ─────────────────────── */
+.sk-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--sk-border);
+  flex-shrink: 0;
+}
+
+/* ─── Skills list ───────────────────────────────────────────────── */
+.sk-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem 1.25rem 1.25rem 1.1rem;
+}
+
+.sk-name {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.25rem;
+}
+
+.sk-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sk-tag {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--sk-tag-border);
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.sk-card:hover .sk-tag {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .sk-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sk-icon-wrapper {
+    flex: 0 0 120px;
+    height: 160px;
+  }
+}

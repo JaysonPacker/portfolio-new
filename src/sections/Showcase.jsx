@@ -1,102 +1,170 @@
-import {useRef} from "react";
-import {gsap} from 'gsap';
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {useGSAP} from "@gsap/react";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { projects } from "../constants/index.js";
+import "../showcase.css";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
+/* ─── Arrow icon ────────────────────────────────────────────────── */
+const ArrowIcon = ({ size = 13 }) => (
+    <svg width={size} height={size} viewBox="0 0 14 14" fill="none">
+        <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor"
+            strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+);
+
+/* ─── Tag pill ──────────────────────────────────────────────────── */
+const Tag = ({ label }) => <span className="sc-tag">{label}</span>;
+
+/* ─── Featured card ─────────────────────────────────────────────── */
+const FeaturedCard = ({ project, cardRef }) => {
+    const navigate = useNavigate();
+    return (
+        <div
+            ref={cardRef}
+            className="sc-card sc-card--featured"
+            onClick={() => navigate(`/project/${project.slug}`)}
+            style={{ cursor: 'pointer' }}
+        >
+            <div className="sc-card__body">
+                <h3 className="sc-card__title">{project.name}</h3>
+                <div className="sc-tags">
+                    {project.tools.map(t => <Tag key={t} label={t} />)}
+                </div>
+                <p className="sc-card__desc">{project.description}</p>
+                <span className="sc-card__link">View Project <ArrowIcon /></span>
+            </div>
+            <div className="sc-card__image">
+                <img src={project.imagePaths[0]} alt={project.name} />
+            </div>
+            <span className="sc-badge">Featured</span>
+        </div>
+    );
+};
+
+/* ─── Small card ────────────────────────────────────────────────── */
+const SmallCard = ({ project, cardRef }) => {
+    const navigate = useNavigate();
+    return (
+        <div
+            ref={cardRef}
+            className="sc-card sc-card--small"
+            onClick={() => navigate(`/project/${project.slug}`)}
+            style={{ cursor: 'pointer' }}
+        >
+            <div className="sc-card__image">
+                <img src={project.imagePaths[0]} alt={project.name} />
+            </div>
+            <div className="sc-card__body">
+                <h3 className="sc-card__title">{project.name}</h3>
+                <div className="sc-tags">
+                    {project.tools.map(t => <Tag key={t} label={t} />)}
+                </div>
+                <p className="sc-card__desc">{project.description}</p>
+                <span className="sc-card__link">View <ArrowIcon size={11} /></span>
+            </div>
+        </div>
+    );
+};
+
+/* ─── 2×2 mini thumbnail grid ───────────────────────────────────── */
+const MiniGrid = ({ extraProjects }) => {
+    const navigate = useNavigate();
+    return (
+        <div className="sc-mini-grid">
+            {extraProjects.slice(0, 4).map((p, i) => (
+                <div
+                    key={i}
+                    className="sc-mini-thumb"
+                    title={p.name}
+                    onClick={() => navigate(`/project/${p.slug}`)}
+                    style={{ cursor: 'pointer' }}
+                >
+                    <img src={p.imagePaths[0]} alt={p.name} />
+                </div>
+            ))}
+        </div>
+    );
+};
+
+/* ─── Full Portfolio button ─────────────────────────────────────── */
+const PortfolioButton = () => (
+    <a href="https://jnp1380.wixsite.com/jaysons-portfolio"
+        target="_blank" rel="noopener noreferrer"
+        className="sc-portfolio-btn">
+        <ArrowIcon size={22} />
+        <span>Full<br />Portfolio</span>
+    </a>
+);
+
+/* ─── Main component ────────────────────────────────────────────── */
 const Showcase = () => {
-    const sectionRef = useRef(null);
-    const project1Ref = useRef(null);
-    const project2Ref = useRef(null);
-    const project3Ref = useRef(null);
+    const titleRef    = useRef(null);
+    const featuredRef = useRef(null);
+    const bottomRef   = useRef(null);
+    const card2Ref    = useRef(null);
+    const card3Ref    = useRef(null);
+
+    const featured      = projects[0];
+    const bottomCards   = projects.slice(1, 3);
+    const extraProjects = projects.slice(3, 7);
 
     useGSAP(() => {
-        const cards = [project1Ref.current, project2Ref.current, project3Ref.current];
-
-        gsap.fromTo(
-            sectionRef.current,
-            {opacity: 0},
-            {opacity: 1, duration: 1.5}
-        );
-
-        cards.forEach((card, index) => {
-            gsap.fromTo(
-                card,
+        [titleRef.current, featuredRef.current, bottomRef.current].forEach((el, i) => {
+            if (!el) return;
+            gsap.fromTo(el,
+                { opacity: 0, y: 40 },
                 {
-                    y: 50,
-                    opacity: 0,
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    delay: 0.3 * (index + 1),
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top bottom-=100",
-                    },
+                    opacity: 1, y: 0, duration: 0.85,
+                    delay: 0.12 * i, ease: "power3.out",
+                    scrollTrigger: { trigger: el, start: "top bottom-=80" },
                 }
             );
         });
-    }, [])
+    }, []);
 
     return (
-        <section id="work" ref={sectionRef} className="app-showcase">
+        <section id="work" className="showcase-section">
+            <div className="showcase-inner">
 
-            <div className="w-full">
-                {/* Title */}
-                {/* Title */}
-                <div className="text-center mb-6 relative -top-20">
-                    <h2 className="text-3xl lg:text-4xl font-bold mb-2 text-white">Project Showcase</h2>
-                    <p className="text-gray-200 text-sm lg:text-base">A selection of my recent work</p>
-                </div>
-
-                <div className="showcaselayout relative -top-10">
-                    {/* Big Card */}
-                    <div className="first-project-wrapper" ref={project1Ref}>
-                        <div className="image-wrapper">
-                            <img src="/images/ggk-cover.png" alt="Gizmo Go Kartz cover"/>
-                        </div>
-                        <div className="text-content">
-                            <h2>Large Student Arcade Game and Machine Project (30+ students)</h2>
-                            <p className="text-black md:text-xl">
-                                In this project I led Research Development tasks for physical machines and various tasks across teams
-                            </p>
-                        </div>
+                {/* ROW 1 — title + featured card */}
+                <div className="showcase-row" ref={titleRef}>
+                    <div className="showcase-title-block">
+                        <h2>Recent<br />Projects</h2>
                     </div>
 
-                    {/* Small Cards */}
-                    <div className="project-list-wrapper">
-                        <div className="project" ref={project2Ref}>
-                            <div className="image-wrapper bg-[#ffefdb]">
-                                <img src="/images/finflow2.png" alt="Financial Tracker Platform"/>
-                            </div>
-                            <h2>FinFlow - FullStack Finance Tracker</h2>
-                        </div>
-                        <div className="project" ref={project3Ref}>
-                            <div className="image-wrapper bg-[#ffe7db]">
-                                <img src="/images/rochestar.jpg" alt="AR Experience"/>
-                            </div>
-                            <h2>RochestAR - Augmented Reality History Experience</h2>
-                        </div>
+                    {/* Desktop: split featured card */}
+                    <div className="sc-featured-desktop">
+                        <FeaturedCard project={featured} cardRef={featuredRef} />
+                    </div>
+                    {/* Mobile: same card as small cards */}
+                    <div className="sc-featured-mobile">
+                        <SmallCard project={featured} cardRef={null} />
                     </div>
                 </div>
 
-                {/* Button */}
-                <div className="text-center mt-6">
-                    <a
-                        href="https://jnp1380.wixsite.com/jaysons-portfolio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-6 py-3 text-sm lg:text-base bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-colors duration-300 font-semibold"
-                    >
-                        Learn About These Projects and More on My Wix
-                    </a>
+                {/* ROW 2 — two small cards + right column */}
+                <div className="showcase-row" ref={bottomRef}>
+                    {bottomCards.map((project, i) => (
+                        <SmallCard
+                            key={project.name}
+                            project={project}
+                            cardRef={i === 0 ? card2Ref : card3Ref}
+                        />
+                    ))}
+
+                    <div className="showcase-right-col">
+                        <MiniGrid extraProjects={extraProjects} />
+                        <PortfolioButton />
+                    </div>
                 </div>
+
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Showcase
+export default Showcase;
