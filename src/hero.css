@@ -7,7 +7,7 @@
   --hero-text-color:    #ffffff;
   --hero-sub-color:     rgba(255, 255, 255, 0.75);
   --hero-gradient-from: #ffffff;
-  --hero-gradient-mid:  #000000;
+  --hero-gradient-mid:  #0B0B0B;
 }
 
 /* ─── Section base ─────────────────────────────────────────────── */
@@ -24,7 +24,7 @@
   z-index: -1;
   pointer-events: none;
   background: radial-gradient(
-    ellipse 60% 100% at 0% 50%,
+    ellipse 50% 74% at 5% 50%,
     var(--hero-gradient-from)  0%,
     var(--hero-gradient-from)  10%,
     rgba(80, 80, 80, 0.85)     40%,

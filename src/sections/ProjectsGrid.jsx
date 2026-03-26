@@ -96,7 +96,7 @@ const ProjectsGrid = () => {
 
     return (
         <section id="projects-grid">
-            <div className="pg-inner">
+            <div id="#projects" className="pg-inner">
 
                 {/* Header: title + filter buttons */}
                 <div className="pg-header" ref={headerRef}>

@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CONTACT SECTION
+   ═══════════════════════════════════════════════════════════════════ */
+
+.ct-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+}
+
+.ct-inner {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+#contact h1 {
+  color: #ffffff;
+}
+
+/* ─── Card — white glow style ───────────────────────────────────── */
+.ct-card {
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 2rem 2.25rem;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.04);
+}
+
+.ct-card:focus-within {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.12), 0 0 80px rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Form layout ───────────────────────────────────────────────── */
+.ct-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ct-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ct-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* ─── Label ─────────────────────────────────────────────────────── */
+.ct-label {
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ─── Input / Textarea ──────────────────────────────────────────── */
+.ct-input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ct-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.ct-input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+
+.ct-textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* ─── Submit button ─────────────────────────────────────────────── */
+.ct-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Mona Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.2s ease;
+  margin-top: 0.25rem;
+}
+
+.ct-btn:hover:not(:disabled) {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.12), 0 0 80px rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.ct-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .ct-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ct-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
+

@@ -1,9 +1,10 @@
-import React from 'react';
+
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { Earth } from "./earth.jsx";
 import Particles from "./Particles.jsx";
+import React, { Suspense } from 'react';
+import { OrbitControls, Preload } from "@react-three/drei";
 
 /* ─── Tune planet position and scale here ───────────────────────────
    position: [x, y, z]  — positive x moves right, positive y moves up
@@ -35,6 +36,8 @@ const HeroExperience = () => {
         <Canvas
             camera={{ position: [0, 0, 15], fov: 45 }}
             style={{ height: '100vh', width: '100%' }}
+            frameloop="always"
+            gl={{ preserveDrawingBuffer: true }}
         >
             <ambientLight intensity={40} color="#1a1a40" />
             <directionalLight position={[0, 5, 7]} intensity={2} />
@@ -47,6 +50,7 @@ const HeroExperience = () => {
             />
 
             {/* Earth + specs share the same group so particles orbit the globe */}
+            <Suspense fallback={null}>
             <group position={position}>
                 {/* Particles as sibling of Earth — same local origin */}
                 <Particles
@@ -58,6 +62,8 @@ const HeroExperience = () => {
                     <Earth />
                 </group>
             </group>
+             <Preload all />
+</Suspense>
         </Canvas>
     );
 };

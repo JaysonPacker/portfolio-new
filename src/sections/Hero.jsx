@@ -14,7 +14,7 @@ const Hero = ({ canvasOpacity }) => {
         gsap.fromTo(
             paragraphRef.current,
             { opacity: 0, y: -20 },
-            { opacity: 1, y: 0, duration: 1, ease: 'bounce.out' }
+            { opacity: 1, y: 0, duration: 0.3, ease: 'bounce.out' }
         );
     };
 
