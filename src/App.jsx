@@ -17,7 +17,9 @@ const HomePage = ({ canvasOpacity, textColorProgress, splineOpacity, containerRe
     <div ref={containerRef} className="relative">
         <NavBar />
         <Hero canvasOpacity={canvasOpacity} />
-        <About textColorProgress={textColorProgress} />
+        {
+        //<About textColorProgress={textColorProgress} />/
+        }
         <Skills textColorProgress={textColorProgress} />
         <Showcase textColorProgress={textColorProgress} />
         <ProjectsGrid />
