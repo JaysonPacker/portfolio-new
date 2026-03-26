@@ -83,7 +83,7 @@ const projects = [
         name: "Mira",
         tools: ["React","Javascript","Chromium", "Node.js", "TBD"],
         tags: ["software", "prototype"],
-        url: {},
+        url: [],
         imagePaths: ["/images/mira1.png"],
         description:"Mira is a smart mirror platform I'm developing to explore a different medium to connect people and the digital information they rely on. The system will run on a Raspberry Pi with a two-way mirror display, connected to a companion mobile PWA and navigated through a custom Arduino controller communicating over USB serial. The first application I'm working toward is a closet assistant that will let users photograph clothing items through the phone app, sending them to Google's Gemini API to automatically identify each piece's type, color, material, pattern, formality, and seasonal fit. Those items will sync in real time through Firebase to the mirror, where a recommendation engine(TBD) will suggest outfits adjusted daily for the weather forecast and Google Calendar events.The mirror's interface will be built in JavaScript, running fullscreen in Chromium kiosk mode and primary purpose will be to display events, weather, time, and outfit recommendations, while the phone PWA will handle all data entry and outfit building. Firebase will tie the two together with real-time sync and photo storage, and the Arduino controller will give the mirror a physical, tactile navigation system that feels more intentional than a touchscreen. The closet assistant is the first step in a larger vision for Mira as a multi-application platform, one that reimagines how we interact with everyday and personal information by meeting us where we already are. "
    },
@@ -101,7 +101,7 @@ const projects = [
         tags: ["software",],
         url:  [
             ["Project Site", "https://jacobjablon.github.io/480-jnj-final/"],
-            ["Blog", "https://rcal.ccastellanos.com/rochestar/"]
+            ["Blog", "https://rcal.ccastellanos.com/rochestar/"],
             ["Github", "https://github.com/JacobJablon/480-jnj-final/"]
         ],
         imagePaths: ["/images/rochestar.jpg",
@@ -111,7 +111,7 @@ const projects = [
              
             ],
         description: "RochestAR: Path of Perseverance is a location-based augmented reality experience that explores the history of Rochester through the impact of Kodak, Xerox, and Bausch + Lomb. The goal of the project was to create an interactive walking tour that helps users understand how these companies shaped the city and how the community responded to their decline. This required combining storytelling with physical space, while also working through the technical challenges of GPS-based AR and ensuring the experience functioned reliably on mobile devices. I led the design and development of the AR scenes, focusing on how users would interact with the experience at each location. I organized design sprints to define the user interface, interaction patterns, and overall flow of the story. I also worked on implementing the scenes using A-Frame, AR.js, and GSAP, building animations and coordinating how visuals, sound, and narration came together. A major part of my role was making sure each stop felt consistent and connected, while also adjusting for issues like differences between desktop and mobile behavior and inconsistencies in location tracking.The final result was a complete AR walking experience that guides users through multiple points of interest across the city. Users can navigate to each location, view animated scenes, and follow along with a narrated story. The project was presented at the Rochester Contemporary Arts Center, where it was featured among various historical ARexperiences."
-    }, ,{
+    } ,{
         slug: "pokemon-api",
         name: "Pokemon API",
         tools: ["React", "Node.js"],
@@ -149,18 +149,20 @@ const projects = [
         tools: ["Arduino", "TinkerCad", "3D Printing"],
         tags: ["prototype"],
         url:  [
-            ["Protoype", "https://ti9wxm.axshare.com/?id=l4zddx&p=homepage"]
+            ["App Launcher Blog", "https://jaysonsblog0.wordpress.com/2024/11/20/project-2-pratical-controler/?preview_id=222&preview_nonce=8698d30ea9&preview=true"],
+            ["Moisture Sensor Blog", "https://jaysonsblog0.wordpress.com/2024/11/03/project-1-plant-problem/"],
+            ["Controller Blog", "https://jaysonsblog0.wordpress.com/2024/12/17/project-4-you-or-a-friends-problem/"]
         ],
         imagePaths: [
             "https://static.wixstatic.com/media/15995e_220b7c17e52f4b0583436316ebd8667f~mv2.jpg/v1/fit/w_2880,h_1470,q_90,enc_avif,quality_auto/15995e_220b7c17e52f4b0583436316ebd8667f~mv2.jpg",
-            "https://static.wixstatic.com/media/15995e_d0834b231e6548c3bc1c02b06613039e~mv2.png",
+           "https://static.wixstatic.com/media/15995e_b138b672bb314a95917f6c9636368d91~mv2.jpg",
             "https://static.wixstatic.com/media/15995e_4627d98abfca4a86b40c1edc4296acee~mv2.png",
             "https://static.wixstatic.com/media/15995e_169b862fb7d942d18c0e8f6165787ea1~mv2.png",
             "https://static.wixstatic.com/media/15995e_3ec9039a2d944c7cbe04e6a3613d3922~mv2.png",
             "https://static.wixstatic.com/media/15995e_afed757768664e5a9537a7c33396e7df~mv2.webp",
             "https://static.wixstatic.com/media/15995e_9f4b732cea8b4fa9814da0b462ad5a75~mv2.jpg",
             "https://static.wixstatic.com/media/15995e_e7d1883e52294c4997d552073849ddd9~mv2.webp",
-            "",
+            
         ],
         description:"Across a series of Arduino-based projects, I explored how physical computing can create more intentional and engaging ways to interact with digital systems. Using tools such as Arduino, TinkerCad, and basic 3D modeling, I designed and built multiple prototypes that combined hardware inputs with real-time feedback. These projects focused on translating physical actions into meaningful outputs, while also building a foundation in circuit design, microcontroller programming, and iterative prototyping.The primary project in this series was a Practical Controller (App Launcher), a device that allows users to scroll through applications using a rotary encoder and launch them directly from a physical interface. I designed and 3D-printed a custom enclosure, integrated an Arduino Nano, OLED display, and rotary encoder, and developed the logic to manage input, display states, and system communication. Due to hardware limitations with the Arduino Nano and the Keyboard library, I built a C# console application to handle serial communication and trigger application launches on a computer. This required coordinating hardware input with software behavior, as well as troubleshooting issues with faulty components and inconsistent encoder readings.In addition to this project, I developed a portable soil moisture sensor that visualizes real-time data on an OLED display, and a prototype arcade-style controller using a Pro Micro designed to emulate keyboard input. While the controller faced deployment issues, it reinforced my understanding of HID-based input and hardware constraints. Together, these projects demonstrate my ability to design and build interactive systems that bridge physical and digital experiences, while adapting to technical challenges and refining solutions through iteration."
             }

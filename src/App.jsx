@@ -1,25 +1,23 @@
 import { useRef, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 import Hero         from './sections/Hero.jsx';
 import Showcase     from './sections/Showcase.jsx';
 import ProjectsGrid from './sections/ProjectsGrid.jsx';
-import NavBar        from './components/NavBar.jsx';
-import Skills        from './sections/Skills.jsx';
-import About         from './sections/About.jsx';
-import Contact       from './sections/Contact.jsx';
-import Footer        from './sections/Footer.jsx';
-import LoadingScreen    from './components/LoadingScreen.jsx';
-import ProjectPage      from './sections/ProjectPage.jsx';
+import NavBar       from './components/NavBar.jsx';
+import Skills       from './sections/Skills.jsx';
+import About        from './sections/About.jsx';
+import Contact      from './sections/Contact.jsx';
+import Footer       from './sections/Footer.jsx';
+import LoadingScreen from './components/LoadingScreen.jsx';
+import ProjectPage   from './sections/ProjectPage.jsx';
 
 const HomePage = ({ canvasOpacity, textColorProgress, splineOpacity, containerRef }) => (
     <div ref={containerRef} className="relative">
         <NavBar />
         <Hero canvasOpacity={canvasOpacity} />
-        {
-        //<About textColorProgress={textColorProgress} />
-        }
+        <About textColorProgress={textColorProgress} />
         <Skills textColorProgress={textColorProgress} />
         <Showcase textColorProgress={textColorProgress} />
         <ProjectsGrid />
@@ -29,7 +27,6 @@ const HomePage = ({ canvasOpacity, textColorProgress, splineOpacity, containerRe
 );
 
 const App = () => {
-    const [isLoading, setIsLoading]   = useState(true);
     const [showContent, setShowContent] = useState(false);
     const containerRef = useRef(null);
 
@@ -43,43 +40,36 @@ const App = () => {
     const textColorProgress = useTransform(scrollYProgress, [0, 0.35, 0.5],   [0, 0, 1]);
 
     const handleLoadComplete = () => {
-        setIsLoading(false);
         setTimeout(() => setShowContent(true), 100);
     };
 
     return (
         <>
+            {/* Loading screen always rendered so useProgress can track Three.js assets */}
             <LoadingScreen onLoadComplete={handleLoadComplete} minimumLoadTime={3000} />
 
-            <AnimatePresence>
-                {showContent && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, ease: 'easeOut' }}
-                    >
-
-
-                        <Routes>
-                            {/* Home */}
-                            <Route
-                                path="/"
-                                element={
-                                    <HomePage
-                                        canvasOpacity={heroCanvasOpacity}
-                                        textColorProgress={textColorProgress}
-                                        splineOpacity={splineOpacity}
-                                        containerRef={containerRef}
-                                    />
-                                }
+            {/* HomePage always mounted behind loading screen so models load in background.
+                visibility:hidden keeps it invisible and non-interactive until ready. */}
+            <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: showContent ? 1 : 0 }}
+    transition={{ duration: 1, ease: 'easeOut' }}
+    style={{ visibility: showContent ? 'visible' : 'hidden' }}>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <HomePage
+                                canvasOpacity={heroCanvasOpacity}
+                                textColorProgress={textColorProgress}
+                                splineOpacity={splineOpacity}
+                                containerRef={containerRef}
                             />
-
-                            {/* Project detail — /project/:slug */}
-                            <Route path="/project/:slug" element={<ProjectPage />} />
-                        </Routes>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        }
+                    />
+                    <Route path="/project/:slug" element={<ProjectPage />} />
+                </Routes>
+            </motion.div>
         </>
     );
 };

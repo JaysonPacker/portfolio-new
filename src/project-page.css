@@ -6,9 +6,15 @@
   min-height: 100vh;
   background: #0b0b0b;
   color: #fff;
+  padding-top: 7rem;
   padding-bottom: 6rem;
 }
 
+.pp-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
 /* ─── Back button ───────────────────────────────────────────────── */
 .pp-back {
   display: inline-flex;

@@ -84,10 +84,7 @@ const ProjectPage = () => {
         <div className="pp-page">
             <NavBar />
 
-            {/* Back button */}
-            <button className="pp-back" onClick={() => navigate(-1)}>
-                <BackArrow /> Back
-            </button>
+           
 
             {/* ── Top layout: left col (image + title + skills) / right col (description) */}
             <div className="pp-top">
@@ -103,14 +100,17 @@ const ProjectPage = () => {
                     {/* Title block */}
                     <div className="pp-title-block">
                         <h1 className="pp-title">{project.name}</h1>
-                        <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="pp-title-link"
-                        >
-                            View Live <ExternalIcon />
-                        </a>
+                        {project.url.map(([label, href]) => (
+    <a
+        key={label}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="pp-title-link"
+    >
+        {label} <ExternalIcon />
+    </a>
+))}
                     </div>
 
                     {/* Skills block */}
