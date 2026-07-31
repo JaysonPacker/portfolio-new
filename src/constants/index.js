@@ -64,6 +64,17 @@ const socialImgs = [
 
 const projects = [
     {
+        slug: "censusviz",
+        name: "Census Viz",
+        tools: ["React","Desk.gl", "Mapbox", "TigerWeb API", "U.S. Census API","Chakra UI","Zustand"],
+        tags: ["software", "prototype"],
+        url: [
+            ["NOT YET online", ""],
+        ],
+        imagePaths: ["/images/projects/CensusS1.png"
+                        ],
+        description: "CensusScope is a prototype 3D visualization platform designed to make public U.S. Census data truly accessible to everyone. Navigating official Census databases and dense spreadsheets can be frustratingly unintuitive. CensusScope solves this by taking a visual-first approach—drastically simplifying data navigation so anyone, from researchers to non-experts, can spot regional trends and patterns at a glance. Built with React and Deck.gl, the prototype streams live data from the Census Bureau’s API and TIGERweb service to render states, counties, and tracts as dynamic 3D extrusions where both height and color can encode data variables. Users can seamlessly focus from state down to tract levels, swap across demographic categories (income, population, education, housing, and employment), and customize the visualization modes—complete with smooth camera fly-to transitions and dynamic live legends."},
+{
         slug: "gizmo-go-kartz",
         name: "Gizmo Go Kartz",
         tools: ["C#", "Unity", "R&D", "Leadership"],
