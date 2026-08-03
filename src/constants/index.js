@@ -75,6 +75,29 @@ const projects = [
                         ],
         description: "CensusScope is a prototype 3D visualization platform designed to make public U.S. Census data truly accessible to everyone. Navigating official Census databases and dense spreadsheets can be frustratingly unintuitive. CensusScope solves this by taking a visual-first approach—drastically simplifying data navigation so anyone, from researchers to non-experts, can spot regional trends and patterns at a glance. Built with React and Deck.gl, the prototype streams live data from the Census Bureau’s API and TIGERweb service to render states, counties, and tracts as dynamic 3D extrusions where both height and color can encode data variables. Users can seamlessly focus from state down to tract levels, swap across demographic categories (income, population, education, housing, and employment), and customize the visualization modes—complete with smooth camera fly-to transitions and dynamic live legends."},
 {
+        slug: "interative game",
+        name: "Interactive Media",
+        tools: ["C#", "Unity", "Arduino", "Camera Vision","3D Modeling"],
+        tags: ["software","prototype","design"],
+        url: [
+            ["Rampage project site", "https://rampage.framer.website/"],
+            ["Comically Large Instagram", "https://www.instagram.com/comicallylarge.rit/"]
+        ],
+        imagePaths: [
+            "/images/projects/rncl.png",
+            "https://framerusercontent.com/images/MJ5DL2ePh6iqjKiJaBEzVQ3XIvs.svg?width=183&height=74", 
+            "https://framerusercontent.com/images/hA9IfuvaYJlXd2yvAXtWG369cFs.png?scale-down-to=1024&width=816&height=1082",
+            "/images/projects/ram1.png",
+            "/images/projects/ram2.png",
+            "https://framerusercontent.com/images/FQ85PTN1gVXUB4FdvzkcBFyocYg.png?width=932&height=565",
+           "/images/projects/CL0.png",
+            "/images/projects/CL1.jpg",
+            "/images/projects/CL2.png",
+
+            ],
+        description: "Last year I worked on 2 physical game projects one for each semester. One called rampage developed in the fall, and one called Comically Large, which was developed in the spring. Both were a collaborative effort between an 8-person team (4 designers, 4 developers) to create fun interactive media experiences.\n\n Rampage \n\n Rampage is an alternative-controller arcade game where players ride a giant head, pulling its hair to steer and smash through a village. As the physical design and hardware lead, I modeled and fabricated the structural rideable head and dynamic tilting seat using TinkerCad and woodshop tools. I engineered custom Arduino sensor arrays that integrated directly with Unity, mapping physical player inputs into responsive gameplay mechanics.\n\n Comically\n\n Comically Large is an interactive two-player drawing exhibit created for RIT’s university-wide project showcase. Players use giant oversized pencils to complete prompted comic panels on a digital canvas. I led the hardware and physical controller development by modeling custom components in Tinkercad, 3D printing durable enclosures to sustain public showcase traffic, and embedding Arduino microcontrollers and sensors to seamlessly integrate the physical pencils into the software environment." },
+
+        {
         slug: "gizmo-go-kartz",
         name: "Gizmo Go Kartz",
         tools: ["C#", "Unity", "R&D", "Leadership"],
@@ -89,15 +112,20 @@ const projects = [
              "https://static.wixstatic.com/media/15995e_e42fed074c4b4ca8b6d6dd9e78e81728~mv2.png"
             ],
         description: "Gizmo Go-Kartz was a summer project who's original plan was to make a racing kart game accompanied with its own arcade machines in one of RIT's academic buildings. As team lead of Research and Development I oversaw and and contributed to all aspects pertaining to the Arcade Cabinet, from its design and component selections to how its components communicated would communicate with the game. I also had the secondary responsibility of assisting other teams by completing research and prototyping features for the game on on their behalf."    },
-    {
-        slug: "mira",
-        name: "Mira",
-        tools: ["React","Javascript","Chromium", "Node.js", "TBD"],
-        tags: ["software", "prototype"],
+  {
+        slug: "string house design",
+        name: "String House Redesign",
+        tools: ["Adobe Illustrator"],
+        tags: ["design"],
         url: [],
-        imagePaths: ["/images/mira1.png"],
-        description:"Mira is a smart mirror platform I'm developing to explore a different medium to connect people and the digital information they rely on. The system will run on a Raspberry Pi with a two-way mirror display, connected to a companion mobile PWA and navigated through a custom Arduino controller communicating over USB serial. The first application I'm working toward is a closet assistant that will let users photograph clothing items through the phone app, sending them to Google's Gemini API to automatically identify each piece's type, color, material, pattern, formality, and seasonal fit. Those items will sync in real time through Firebase to the mirror, where a recommendation engine(TBD) will suggest outfits adjusted daily for the weather forecast and Google Calendar events.The mirror's interface will be built in JavaScript, running fullscreen in Chromium kiosk mode and primary purpose will be to display events, weather, time, and outfit recommendations, while the phone PWA will handle all data entry and outfit building. Firebase will tie the two together with real-time sync and photo storage, and the Arduino controller will give the mirror a physical, tactile navigation system that feels more intentional than a touchscreen. The closet assistant is the first step in a larger vision for Mira as a multi-application platform, one that reimagines how we interact with everyday and personal information by meeting us where we already are. "
+        imagePaths: ["https://static.wixstatic.com/media/15995e_123d099c5d0a426db83da345e6ec6c8b~mv2.png/v1/fit/w_635,h_1121,q_90/15995e_123d099c5d0a426db83da345e6ec6c8b~mv2.webp",
+"https://static.wixstatic.com/media/15995e_9dede3cb8b034f66910ad753b63b7a39~mv2.jpg/v1/fit/w_635,h_942,q_90/15995e_9dede3cb8b034f66910ad753b63b7a39~mv2.webp",
+"https://static.wixstatic.com/media/15995e_0369c5a7eec04c838bf008f115b3e365~mv2.jpg/v1/fit/w_635,h_942,q_90/15995e_0369c5a7eec04c838bf008f115b3e365~mv2.webp",
+"https://static.wixstatic.com/media/15995e_c5b3cfd48094430c9ac58814b75e1b0a~mv2.jpg/v1/fit/w_599,h_1132,q_90/15995e_c5b3cfd48094430c9ac58814b75e1b0a~mv2.webp"
+],
+        description:"This project focused on redesigning the logo for String House, a local string instrument shop in Rochester, New York. I design the logo with the goal of creating a more cohesive brand identity, featuring simple modern and somewhat playful visuals. Using the updated logo, I extended the visuals into a set of branded print materials to ensure consistency across different applications.  After finalizing the logos design, I applied it to a set of print options, including a business card, letterhead, and takeaway card."
    },
+
     {
         slug: "rochestar",
         name: "RochestAR",
