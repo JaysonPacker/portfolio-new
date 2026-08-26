@@ -87,10 +87,14 @@
 }
 
 .sc-card:hover {
-  box-shadow: var(--card-shadow-hover);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+.sc-card:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  --text-body: #ffffff;
+  --text-link: #ffffff;
+}
 /* ─── Featured card (top row, desktop) ────────────────────────── */
 .sc-card--featured {
   flex: 1 1 0;

@@ -84,8 +84,6 @@ const ProjectPage = () => {
         <div className="pp-page">
             <NavBar />
 
-           
-
             {/* ── Top layout: left col (image + title + skills) / right col (description) */}
             <div className="pp-top">
 

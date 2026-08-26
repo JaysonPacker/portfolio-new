@@ -70,47 +70,14 @@ const SmallCard = ({ project, cardRef }) => {
     );
 };
 
-/* ─── 2×2 mini thumbnail grid ───────────────────────────────────── */
-const MiniGrid = ({ extraProjects }) => {
-    const navigate = useNavigate();
-    return (
-        <div className="sc-mini-grid">
-            {extraProjects.slice(0, 4).map((p, i) => (
-                <div
-                    key={i}
-                    className="sc-mini-thumb"
-                    title={p.name}
-                    onClick={() => navigate(`/project/${p.slug}`)}
-                    style={{ cursor: 'pointer' }}
-                >
-                    <img src={p.imagePaths[0]} alt={p.name} />
-                </div>
-            ))}
-        </div>
-    );
-};
-
-/* ─── Full Portfolio button ─────────────────────────────────────── */
-const PortfolioButton = () => (
-    <a href="https://jnp1380.wixsite.com/jaysons-portfolio"
-        target="_blank" rel="noopener noreferrer"
-        className="sc-portfolio-btn">
-        <ArrowIcon size={22} />
-        <span>Full<br />Portfolio</span>
-    </a>
-);
-
 /* ─── Main component ────────────────────────────────────────────── */
 const Showcase = () => {
     const titleRef    = useRef(null);
     const featuredRef = useRef(null);
     const bottomRef   = useRef(null);
-    const card2Ref    = useRef(null);
-    const card3Ref    = useRef(null);
 
-    const featured      = projects[0];
-    const bottomCards   = projects.slice(1, 3);
-    const extraProjects = projects.slice(3, 7);
+    const featured    = projects[0];
+    const bottomCards = projects.slice(1, 3);
 
     useGSAP(() => {
         [titleRef.current, featuredRef.current, bottomRef.current].forEach((el, i) => {
@@ -146,20 +113,14 @@ const Showcase = () => {
                     </div>
                 </div>
 
-                {/* ROW 2 — two small cards + right column */}
+                {/* ROW 2 — two small cards */}
                 <div className="showcase-row" ref={bottomRef}>
-                    {bottomCards.map((project, i) => (
+                    {bottomCards.map((project) => (
                         <SmallCard
                             key={project.name}
                             project={project}
-                            cardRef={i === 0 ? card2Ref : card3Ref}
                         />
                     ))}
-
-                    <div className="showcase-right-col">
-                        <MiniGrid extraProjects={extraProjects} />
-                        <PortfolioButton />
-                    </div>
                 </div>
 
             </div>

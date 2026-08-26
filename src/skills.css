@@ -10,16 +10,21 @@
   --sk-tag-border:  rgba(255, 255, 255, 0.1);
 }
 
-/* ─── Grid ──────────────────────────────────────────────────────── */
+/* ─── Grid - turned to flexbox ──────────────────────────────────────────────────────── */
 .sk-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
   margin-top: 3rem;
 }
 
+
 /* ─── Card — spotlight style (card 20) ─────────────────────────── */
 .sk-card {
+ display: flex;
+  flex: 1 1 460px;   /* grow/shrink, preferred width matches your old minmax floor */
+  max-width: 600px;  /* stops cards from stretching too wide on huge screens */
   position: relative;
   overflow: hidden;
   background: var(--sk-bg);
@@ -60,11 +65,13 @@
   align-items: center;
   gap: 0;
   min-height: 200px;
+  height: 100%;               
+  width: 100%;
 }
 
 /* ─── 3D model canvas wrapper ───────────────────────────────────── */
 .sk-icon-wrapper {
-  flex: 0 0 100px;
+  flex: 0 0 50px;
   height: 200px;
   position: relative;
 }
@@ -80,6 +87,7 @@
 /* ─── Skills list ───────────────────────────────────────────────── */
 .sk-info {
   flex: 1;
+  min-width: 0; 
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -113,6 +121,7 @@
   padding: 0.25rem 0.6rem;
   letter-spacing: 0.04em;
   transition: background 0.2s, border-color 0.2s;
+  
 }
 
 .sk-card:hover .sk-tag {
